@@ -52,8 +52,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       <button class="btn">Login</button>
       <p class="forgot">Don't have an account? <a href="register.php">Register here</a></p>
-      <p class="forgot"><a href="forgot-password.php">Forgot your password?</a></p>
+      <p class="forgot">
+   <a href="#" onclick="handleForgotPassword()">Forgot your password?</a>
+</p>
+
     </form>
   </main>
+  <script>
+function handleForgotPassword() {
+  const emailField = document.querySelector('input[name="email"]');
+  const email = emailField.value.trim();
+
+  if (email === "") {
+    alert("Please enter your email first.");
+  } else {
+    window.location.href = "forgot-password.php?email=" + encodeURIComponent(email);
+  }
+}
+</script>
+
 </body>
+
 </html>
